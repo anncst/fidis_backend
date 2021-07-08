@@ -23,7 +23,7 @@ app.get("/songs", (req, res) => {
     });
 })
 
-app.post('/song/create', (req, res) => {
+app.post('/song', (req, res) => {
     if (!req.body){
         res.status(400)
         res.json({message:"Request body is missing"})
@@ -54,4 +54,18 @@ app.post('/song/create', (req, res) => {
             res.json(err);
         })
 })
+
+app.get('/song/:songId', (req, res) => {
+    const songId = req.params.songId;
+
+    Song.findById(songId)
+        .then(result => {
+            res.json(result)
+        })
+        .catch(err =>{
+            res.status(404);
+            res.json(err);
+        })
+})
+
 
