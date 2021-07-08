@@ -1,0 +1,16 @@
+{
+  "name": "fidis",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Milena Szelcel",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon",
+    "milena": "yarn",
+    "mongo": "brew services start mongodb-community"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.1"
+  }
+}
