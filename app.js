@@ -4,6 +4,7 @@ const songsRouter = require('./routes/songsRouter');
 const songRouter = require('./routes/songRouter');
 const profileRouter = require ('./routes/profileRouter');
 const authRouter = require ('./routes/authRouter');
+const profileController = require("./controllers/profileController");
 
 mongoose.connect('mongodb://localhost:27017/fidis', {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -23,4 +24,6 @@ app.use('/profile', profileRouter)
 
 //register and login router
 app.use('/auth', authRouter)
+
+app.get('/history', profileController.getRecentlyPlayed)
 
