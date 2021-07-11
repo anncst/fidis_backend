@@ -10,7 +10,12 @@ const songSchema = new Schema({
         type: String,
         required: true,
     }
-})
+});
+
+songSchema.index({
+    title: 'text',
+    author: 'text',
+}); 
 
 
 module.exports = mongoose.model("Song", songSchema);

@@ -9,7 +9,8 @@ const historySchema = new Schema({
     },
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        select: false,
     },
     user:{
         type: Schema.Types.ObjectID,
