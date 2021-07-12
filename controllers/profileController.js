@@ -1,7 +1,13 @@
 const User = require('../models/user');
 
 const myProfile = (req, res) => {
-    const id = "60e6bec751b64698304a4a6f"
+    const id = req.session.userId;
+
+    if (!id) {
+        res.status(401)
+        res.send()
+        return
+    }
 
     User.findById(id, '+email')
         .then(result => {

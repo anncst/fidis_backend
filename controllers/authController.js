@@ -15,6 +15,8 @@ const createAccount = (req, res) => {
         user.save()
         .then(result => {
             res.status(201);
+            req.session.username = result.username;
+            req.session.userId = result.id;
             res.send();
         })
         .catch(err => {
@@ -36,6 +38,8 @@ const login = (req, res) => {
             if (match){
                 user.lastOnline = Date.now();
                 user.save()
+                req.session.username = user.username;
+                req.session.userId = user.id;
                 res.send("Successfully");
             } else{
                 res.send("Wrong password")
@@ -45,7 +49,16 @@ const login = (req, res) => {
     })
 }
 
+const logout = (req,res) => {
+    req.session.destroy((err)=>{
+        console.log(err);
+    })
+    res.status(200);
+    res.send();
+}
+
 module.exports = {
     createAccount,
-    login
+    login,
+    logout
 }
