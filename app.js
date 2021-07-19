@@ -8,7 +8,7 @@ const historyRouter = require('./routes/historyRouter');
 const searchRouter = require('./routes/searchRouter');
 const session = require('express-session');
 
-mongoose.connect('mongodb://localhost:27017/fidis', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/fidis', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true,});
 
 const app = express();
 

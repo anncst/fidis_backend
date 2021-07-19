@@ -1,5 +1,6 @@
 const Song = require("../models/song");
 const Chord = require("../models/chord")
+const History = require('../models/history')
 
 //song
 const song = (req, res) => {
@@ -40,9 +41,16 @@ const song = (req, res) => {
 //song search by id
 const songById = (req, res) => {
     const songId = req.params.songId;
+    const userId = req.session.userId;
 
     Song.findById(songId, "+text").populate("chords")
         .then(result => {
+
+            const history = new History({
+                song: result,
+                user: userId
+            })
+            history.save()
             res.json(result)
         })
         .catch(err => {

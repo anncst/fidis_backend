@@ -34,6 +34,10 @@ const login = (req, res) => {
         username: username,
     }, "+password")
     .then(user => {
+        if(!user) {
+            res.send("User not found")
+            return;
+        }
         user.verifyPassword(password).then(match => {
             if (match){
                 user.lastOnline = Date.now();
@@ -46,6 +50,9 @@ const login = (req, res) => {
             }
         })
         
+    }).catch(err => {
+        res.json(err);
+        res.status(401)
     })
 }
 
