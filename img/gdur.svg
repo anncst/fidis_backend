@@ -1,0 +1,26 @@
+<svg id="Component_2_7" data-name="Component 2 – 7" xmlns="http://www.w3.org/2000/svg" width="227.5" height="176" viewBox="0 0 227.5 176">
+  <g id="Rectangle_3" data-name="Rectangle 3" transform="translate(0 29)" fill="none" stroke="#393838" stroke-linejoin="round" stroke-width="3">
+    <rect width="227" height="139" stroke="none"/>
+    <rect x="1.5" y="1.5" width="224" height="136" fill="none"/>
+  </g>
+  <line id="Line_4" data-name="Line 4" x2="227" transform="translate(0.5 56.5)" fill="none" stroke="#707070" stroke-width="1"/>
+  <line id="Line_5" data-name="Line 5" x2="227" transform="translate(0.5 82.5)" fill="none" stroke="#707070" stroke-width="1"/>
+  <line id="Line_6" data-name="Line 6" x2="227" transform="translate(0.5 108.5)" fill="none" stroke="#707070" stroke-width="1"/>
+  <line id="Line_7" data-name="Line 7" x2="227" transform="translate(0.5 136.5)" fill="none" stroke="#707070" stroke-width="1"/>
+  <line id="Line_8" data-name="Line 8" x2="1" y2="139" transform="translate(173.5 29.5)" fill="none" stroke="#707070" stroke-width="1"/>
+  <line id="Line_9" data-name="Line 9" y2="139" transform="translate(113.5 29.5)" fill="none" stroke="#707070" stroke-width="1"/>
+  <line id="Line_10" data-name="Line 10" y2="139" transform="translate(53.5 29.5)" fill="none" stroke="#707070" stroke-width="1"/>
+  <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(56 159)" fill="#393838" stroke="#707070" stroke-width="1">
+    <ellipse cx="9" cy="8.5" rx="9" ry="8.5" stroke="none"/>
+    <ellipse cx="9" cy="8.5" rx="8.5" ry="8" fill="none"/>
+  </g>
+  <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(54 24)" fill="#393838" stroke="#707070" stroke-width="1">
+    <ellipse cx="9" cy="8.5" rx="9" ry="8.5" stroke="none"/>
+    <ellipse cx="9" cy="8.5" rx="8.5" ry="8" fill="none"/>
+  </g>
+  <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(121 48)" fill="#393838" stroke="#707070" stroke-width="1">
+    <ellipse cx="9" cy="8.5" rx="9" ry="8.5" stroke="none"/>
+    <ellipse cx="9" cy="8.5" rx="8.5" ry="8" fill="none"/>
+  </g>
+  <text id="G" transform="translate(110 22)" fill="#383838" font-size="25" font-family="OriyaMN-Bold, Oriya MN" font-weight="700"><tspan x="-10.522" y="0">G</tspan></text>
+</svg>

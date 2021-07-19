@@ -1,4 +1,5 @@
 const Song = require("../models/song");
+const Chord = require("../models/chord")
 
 //song
 const song = (req, res) => {
@@ -10,6 +11,8 @@ const song = (req, res) => {
 
     const title = req.body.title;
     const author = req.body.author;
+    const text = req.body.text;
+    const chords = req.body.chords;
 
     if (!title || !title.length || !author || !author.length) {
         res.status(400);
@@ -20,6 +23,8 @@ const song = (req, res) => {
     const song = new Song({
         title: title,
         author: author,
+        text: text,
+        chods: chords
     });
     song.save()
         .then(result => {
@@ -36,13 +41,14 @@ const song = (req, res) => {
 const songById = (req, res) => {
     const songId = req.params.songId;
 
-    Song.findById(songId)
+    Song.findById(songId, "+text").populate("chords")
         .then(result => {
             res.json(result)
         })
         .catch(err => {
             res.status(404);
             res.json(err);
+            console.log(err)
         })
 };
 

@@ -2,7 +2,7 @@ const Song = require("../models/song");
 
 //songs
 const songs = (req, res) => {
-    Song.find().then((songs) => {
+    Song.find().populate('chords').then((songs) => {
         console.log(songs);
         res.json(songs);
     });

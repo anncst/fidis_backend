@@ -9,6 +9,15 @@ const songSchema = new Schema({
     author: {
         type: String,
         required: true,
+    },
+    chords:[{
+        type: Schema.Types.ObjectID,
+        ref: 'Chord',
+    }],
+    text:{
+        type: String, 
+        required: true,
+        select: false,
     }
 });
 

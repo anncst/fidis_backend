@@ -15,7 +15,7 @@ const historySchema = new Schema({
     user:{
         type: Schema.Types.ObjectID,
         ref: 'User',
-        required: true
+        required: true,
     }
 })
 
