@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Chord = require('../models/chord');
 
 const songSchema = new Schema({
     title: {

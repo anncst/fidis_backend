@@ -7,6 +7,7 @@ const authRouter = require ('./routes/authRouter');
 const historyRouter = require('./routes/historyRouter');
 const searchRouter = require('./routes/searchRouter');
 const session = require('express-session');
+const chordRouter = require('./routes/chordRouter');
 
 mongoose.connect('mongodb://localhost:27017/fidis', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true,});
 
@@ -38,4 +39,6 @@ app.use('/history', historyRouter);
 
 //search router
 app.use('/search', searchRouter);
+
+app.use('/chord', chordRouter)
 

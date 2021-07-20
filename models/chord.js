@@ -16,4 +16,6 @@ const chordSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model("Chord", chordSchema);
+const Chord  = mongoose.model("Chord", chordSchema);
+
+module.exports = Chord;

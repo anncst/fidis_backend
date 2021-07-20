@@ -1,5 +1,4 @@
 const Song = require("../models/song");
-const Chord = require("../models/chord")
 const History = require('../models/history')
 
 //song
