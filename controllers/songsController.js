@@ -1,4 +1,6 @@
+const FavouriteSong = require("../models/favouriteSong");
 const Song = require("../models/song");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 //songs
 const songs = (req, res) => {
@@ -11,10 +13,28 @@ const songs = (req, res) => {
 
 //favourite songs
 const favouriteSongs = (req, res) => {
-    res.json([
-        {title: "KAramba", author: "Alalal"},
-        {title: "KAramba", author: "Alalal"},
-    ]);
+    const userId = req.session.userId;
+    console.log(userId);
+
+    FavouriteSong.find({user: ObjectId(userId)}).populate({
+        path: 'song',
+        populate: {path: 'chords'}
+    })
+    .then(result => {
+        console.log(result)
+        res.json(result.map(favouriteSong => {
+            return {
+                author: favouriteSong.song.author,
+                title: favouriteSong.song.title,
+                chords: favouriteSong.song.chords
+            }
+        }));
+    })
+    .catch(err => {
+        res.status(401)
+        res.json(err);
+    })
+
 };
 
 //export

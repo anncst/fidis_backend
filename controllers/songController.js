@@ -1,5 +1,6 @@
 const Song = require("../models/song");
-const History = require('../models/history')
+const History = require('../models/history');
+const FavouriteSong = require("../models/favouriteSong");
 
 //song
 const song = (req, res) => {
@@ -57,10 +58,30 @@ const songById = (req, res) => {
             res.json(err);
             console.log(err)
         })
-};
+}
+
+const addFavouriteSong = (req, res) => {
+    const songId = req.params.songId;
+    const userId = req.session.userId;
+
+    const favouriteSong = new FavouriteSong({
+        song: songId,
+        user: userId
+    })
+    favouriteSong.save()
+    .then(result => {
+        res.json(result)
+    })
+    .catch(err => {
+        res.status(404)
+        res.json(err);
+    })
+
+}
 
 //export
 module.exports = {
     song,
     songById,
+    addFavouriteSong
 }

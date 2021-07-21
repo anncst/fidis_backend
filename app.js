@@ -8,6 +8,7 @@ const historyRouter = require('./routes/historyRouter');
 const searchRouter = require('./routes/searchRouter');
 const session = require('express-session');
 const chordRouter = require('./routes/chordRouter');
+const MongoStore = require('connect-mongo');
 
 mongoose.connect('mongodb://localhost:27017/fidis', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true,});
 
@@ -19,7 +20,10 @@ app.use(express.json());
 app.use(session({
     secret:"p2s5v8y/B?E(G+KbPeShVmYq3t6w9z$C",
     saveUninitialized:false,
-    resave: false
+    resave: false,
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://localhost:27017/session',
+      })
 }))
 
 //songs router
