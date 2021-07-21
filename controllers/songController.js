@@ -44,14 +44,26 @@ const songById = (req, res) => {
     const userId = req.session.userId;
 
     Song.findById(songId, "+text").populate("chords")
-        .then(result => {
+        .then(song => {
 
             const history = new History({
-                song: result,
+                song: song,
                 user: userId
             })
             history.save()
-            res.json(result)
+
+            FavouriteSong.exists({
+                song: songId,
+                user: userId
+            }) .then(result => {
+                res.json({
+                    title: song.title, 
+                    author: song.author,
+                    text: song.text,
+                    chords: song.chords,
+                    liked: result
+                })
+            })   
         })
         .catch(err => {
             res.status(404);
@@ -79,9 +91,20 @@ const addFavouriteSong = (req, res) => {
 
 }
 
+const deleteFavouriteSong = (req, res) => {
+    const songId = req.params.songId;
+    const userId = req.session.userId;
+
+    FavouriteSong.remove({user: userId, song: songId})
+    .then(result => {
+        res.send()
+    })
+}
+
 //export
 module.exports = {
     song,
     songById,
-    addFavouriteSong
+    addFavouriteSong,
+    deleteFavouriteSong
 }

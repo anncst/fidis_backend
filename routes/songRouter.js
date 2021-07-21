@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post('/',songController.song )
 router.get('/:songId', songController.songById)
-router.post('/:songId/liked', songController.addFavouriteSong)
+router.put('/:songId/liked', songController.addFavouriteSong)
+router.delete('/:songId/liked', songController.deleteFavouriteSong)
 
 module.exports = router;

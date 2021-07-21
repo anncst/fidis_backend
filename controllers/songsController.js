@@ -26,6 +26,7 @@ const favouriteSongs = (req, res) => {
             return {
                 author: favouriteSong.song.author,
                 title: favouriteSong.song.title,
+                id: favouriteSong.song.id,
                 chords: favouriteSong.song.chords
             }
         }));
