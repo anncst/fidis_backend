@@ -11,6 +11,7 @@ const getRecentlyPlayed = (req, res) => {
             return {
                 author: history.song.author,
                 title: history.song.title,
+                id: history.song.id
             }
          }));
      })

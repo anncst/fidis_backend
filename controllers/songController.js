@@ -39,37 +39,45 @@ const song = (req, res) => {
 };
 
 //song search by id
-const songById = (req, res) => {
+const songById = async (req, res) => {
     const songId = req.params.songId;
     const userId = req.session.userId;
 
-    Song.findById(songId, "+text").populate("chords")
-        .then(song => {
+    const song = await Song.findById(songId, "+text").populate("chords");
 
-            const history = new History({
-                song: song,
-                user: userId
-            })
-            history.save()
+    if (!song) {
+        res.status(404);
+        return
+    }
 
-            FavouriteSong.exists({
-                song: songId,
-                user: userId
-            }) .then(result => {
-                res.json({
-                    title: song.title, 
-                    author: song.author,
-                    text: song.text,
-                    chords: song.chords,
-                    liked: result
-                })
-            })   
+    const history = await History.findOne({
+        song: songId,
+        user: userId,
+    });
+    
+    if (!history) {
+        const history = new History({
+            song: song,
+            user: userId
         })
-        .catch(err => {
-            res.status(404);
-            res.json(err);
-            console.log(err)
-        })
+        history.save()
+    } else {
+        history.date = new Date()
+        history.save()
+    }
+            
+    const isFavourite = await FavouriteSong.exists({
+        song: songId,
+        user: userId
+    })
+
+    res.json({
+        title: song.title, 
+        author: song.author,
+        text: song.text,
+        chords: song.chords,
+        liked: isFavourite
+    })
 }
 
 const addFavouriteSong = (req, res) => {
