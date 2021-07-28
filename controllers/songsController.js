@@ -4,9 +4,15 @@ const ObjectId = require("mongoose").Types.ObjectId;
 
 //songs
 const songs = (req, res) => {
-    Song.find().populate('chords').then((songs) => {
-        console.log(songs);
-        res.json(songs);
+    Song.find().populate('chords author').then((songs) => {
+        res.json(songs.map(song => {
+            return{
+                author: song.author.name,
+                title: song.title,
+                chords: song.chords,
+                id: song.id
+            }
+        }))
     });
 };
 

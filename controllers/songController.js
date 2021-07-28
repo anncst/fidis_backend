@@ -43,7 +43,7 @@ const songById = async (req, res) => {
     const songId = req.params.songId;
     const userId = req.session.userId;
 
-    const song = await Song.findById(songId, "+text").populate("chords");
+    const song = await Song.findById(songId, "+text").populate("chords author");
 
     if (!song) {
         res.status(404);
@@ -73,10 +73,11 @@ const songById = async (req, res) => {
 
     res.json({
         title: song.title, 
-        author: song.author,
+        author: song.author.name,
         text: song.text,
         chords: song.chords,
-        liked: isFavourite
+        liked: isFavourite,
+        id: songId
     })
 }
 

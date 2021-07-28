@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Chord = require('../models/chord');
+const Author = require('../models/author')
 
 const songSchema = new Schema({
     title: {
@@ -8,8 +9,8 @@ const songSchema = new Schema({
         required: true,
     },
     author: {
-        type: String,
-        required: true,
+        type: Schema.Types.ObjectID,
+        ref: 'Author',
     },
     chords:[{
         type: Schema.Types.ObjectID,
