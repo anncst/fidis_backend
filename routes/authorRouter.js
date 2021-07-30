@@ -3,6 +3,6 @@ const authorController = require('../controllers/authorController');
 
 const router = express.Router();
 
-router.get('/:authorId', authorController.getAuthorSongs);
+router.get('/:name', authorController.getAuthorSongs);
 
 module.exports = router;
