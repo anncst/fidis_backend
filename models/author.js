@@ -9,7 +9,11 @@ const authorSchema = new Schema({
     songs: [{
         type: Schema.Types.ObjectID,
         ref: 'Song',
-    }]
+    }],
+    spotifyId:{
+        type: String,
+    }
+    
 })
 
 module.exports = mongoose.model("Author", authorSchema);

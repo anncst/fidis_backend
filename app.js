@@ -11,6 +11,8 @@ const chordRouter = require('./routes/chordRouter');
 const MongoStore = require('connect-mongo');
 const authorRouter = require('./routes/authorRouter');
 
+require('dotenv').config();
+
 mongoose.connect('mongodb://localhost:27017/fidis', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true,});
 
 const app = express();
