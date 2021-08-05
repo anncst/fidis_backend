@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Chord = require('../models/chord');
-const Author = require('../models/author')
+const Author = require('../models/author');
 
 const songSchema = new Schema({
     title: {
@@ -24,8 +24,8 @@ const songSchema = new Schema({
 });
 
 songSchema.index({
-    title: 'text',
-    author: 'text',
+    'title': 'text',
+    'author.name': 'text',
 }); 
 
 
