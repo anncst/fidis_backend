@@ -33,8 +33,24 @@ const getProfile = (req, res) => {
         })
 }
 
+const editProfile = async (req, res) => {
+    const id = req.session.userId;
+    const username = req.body.username;
+    const password = req.body.password;
+    const email = req.body.email;
+
+    const user = await User.findById(id, '+email');
+    if(username) user.username = username;
+    if(email) user.email = email;
+    if(password) await user.setPassword(password);
+
+    const savedUser = await user.save();
+    res.json(savedUser)
+}
+
 //export
 module.exports = {
     getProfile,
     myProfile,
+    editProfile,
 }

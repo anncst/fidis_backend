@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get('/', profileController.myProfile)
 router.get('/:username', profileController.getProfile);
+router.post('/edit', profileController.editProfile);
 
 module.exports = router;

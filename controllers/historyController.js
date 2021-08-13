@@ -5,7 +5,10 @@ const getRecentlyPlayed = (req, res) => {
     const userId = req.session.userId;
     console.log(userId);
 
-    History.find({user: ObjectId(userId)}).populate("song").sort("-date").limit(5)
+    History.find({user: ObjectId(userId)}).populate({
+        path: 'song',
+        populate: {path: 'author'}
+    }).sort("-date").limit(5)
      .then(result => {
          res.json(result.map(history => {
             return {

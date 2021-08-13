@@ -73,7 +73,7 @@ const songById = async (req, res) => {
 
     res.json({
         title: song.title, 
-        author: song.author.name,
+        author: song.author,
         text: song.text,
         chords: song.chords,
         liked: isFavourite,

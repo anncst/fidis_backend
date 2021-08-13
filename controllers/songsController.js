@@ -7,7 +7,7 @@ const songs = (req, res) => {
     Song.find().populate('chords author').then((songs) => {
         res.json(songs.map(song => {
             return{
-                author: song.author.name,
+                author: song.author,
                 title: song.title,
                 chords: song.chords,
                 id: song.id
@@ -24,7 +24,7 @@ const favouriteSongs = (req, res) => {
 
     FavouriteSong.find({user: ObjectId(userId)}).populate({
         path: 'song',
-        populate: {path: 'chords'}
+        populate: {path: 'chords author'}
     })
     .then(result => {
         console.log(result)

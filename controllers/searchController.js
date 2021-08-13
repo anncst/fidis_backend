@@ -8,7 +8,7 @@ const search = (req, res) => {
     .then(result => {
         res.json(result.map(song => {
             return{
-                author: song.author.name,
+                author: song.author,
                 title: song.title,
                 chords: song.chords,
                 id: song.id
