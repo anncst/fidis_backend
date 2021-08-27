@@ -9,6 +9,13 @@ const getAuthorSongs = (req, res) => {
         populate: {path: 'chords author'}
     })
     .then(result => {
+
+        // change songs _id to id
+        result.songs.map(song => {
+            song._doc.id = song._id;
+            song._id = null;
+        })
+
         if(!result.spotifyId){
             res.json({
                 name: result.name,

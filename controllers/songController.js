@@ -14,6 +14,11 @@ const song = (req, res) => {
     const author = req.body.author;
     const text = req.body.text;
     const chords = req.body.chords;
+    if(req.session.userId){
+        const user = req.session.userId
+    }
+    
+    
 
     if (!title || !title.length || !author || !author.length) {
         res.status(400);

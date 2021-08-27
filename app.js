@@ -10,6 +10,7 @@ const session = require('express-session');
 const chordRouter = require('./routes/chordRouter');
 const MongoStore = require('connect-mongo');
 const authorRouter = require('./routes/authorRouter');
+const myProfileRouter = require('./routes/myProfileRouter');
 
 require('dotenv').config();
 
@@ -50,4 +51,6 @@ app.use('/search', searchRouter);
 app.use('/chord', chordRouter)
 
 app.use('/author', authorRouter)
+
+app.use('/myprofile', myProfileRouter);
 

@@ -20,7 +20,6 @@ const songs = (req, res) => {
 //favourite songs
 const favouriteSongs = (req, res) => {
     const userId = req.session.userId;
-    console.log(userId);
 
     FavouriteSong.find({user: ObjectId(userId)}).populate({
         path: 'song',
